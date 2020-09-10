@@ -10,8 +10,8 @@ var usersRouter = require('./routes/users');
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "pug");
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -37,5 +37,14 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+  //Setting up a database
+var mongoose = require('mongoose');
+var mongooseDB = "mongodb+srv://Ken:<password>@cluster0.lcalo.mongodb.net/<dbname>?retryWrites=true&w=majority";
+mongoose.connect(mongooseDB, { useNewUrlParser: true, useUnifiedTopology: true});
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDV connection error: '));
+
+
+
 
 module.exports = app;
