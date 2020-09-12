@@ -41,7 +41,7 @@ app.use(function(err, req, res, next) {
 });
   //Setting up a database
 var mongoose = require('mongoose');
-var mongooseDB = "mongodb+srv://Ken:cheese11@cluster0.lcalo.mongodb.net/Cluster0?retryWrites=true&w=majority";
+var mongooseDB = "mongodb+srv://Ken:cheese11@cluster0.lcalo.mongodb.net/<db_name>?retryWrites=true&w=majority";
 mongoose.connect(mongooseDB, { useNewUrlParser: true, useUnifiedTopology: true});
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error: '));
